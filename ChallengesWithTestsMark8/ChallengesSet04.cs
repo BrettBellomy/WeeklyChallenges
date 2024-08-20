@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -6,47 +8,123 @@ namespace ChallengesWithTestsMark8
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            int answer = 0;
+
+            foreach (var num in numbers)
+            {
+                if (num % 2 == 0)
+                {
+                    answer += num;
+                }
+                if (num % 2 != 0)
+                {
+                    answer -= num;
+                }
+            }
+            return answer;
         }
 
-        public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
+        public int GetLengthOfShortestString(string stringOne, string stringTwo, string stringThree, string stringFour)
         {
-            throw new NotImplementedException();
+            int stringOneLength = stringOne.Length;
+            int stringTwoLength = stringTwo.Length;
+            int stringThreeLength = stringThree.Length;
+            int stringFourLength = stringFour.Length;
+
+            int[] stringLengths = new int[] { stringOneLength, stringTwoLength, stringThreeLength, stringFourLength };
+
+            return stringLengths.Min();
         }
 
-        public int GetSmallestNumber(int number1, int number2, int number3, int number4)
+        public int GetSmallestNumber(int numOne, int numTwo, int numThree, int numFour)
         {
-            throw new NotImplementedException();
+            int[] numbers = new int[] { numOne, numTwo, numThree, numFour };
+            return numbers.Min();
         }
 
-        public void ChangeBusinessNameTo_TrueCoders(Business biz)
+        public void ChangeBusinessNameTo_TrueCoders(Business myBusiness)
         {
-            throw new NotImplementedException();
+            myBusiness.Name = "TrueCoders";
         }
 
-        public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
+        public bool CouldFormTriangle(int sideOneLength, int sideTwoLength, int sideThreeLength)
         {
-            throw new NotImplementedException();
+            if (sideOneLength + sideTwoLength > sideThreeLength && sideOneLength + sideThreeLength > sideTwoLength && sideTwoLength + sideThreeLength > sideOneLength)
+            {
+                return true;
+            }
+            else return false;
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            double number;
+            if (double.TryParse(input, out number))
+            {
+                return true;
+            }
+            else return false;
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            int nullCounter = 0;
+            int otherCounter = 0;
+
+            foreach (var obj in objs)
+            {
+                if (obj == null)
+                {
+                    nullCounter++;
+                }
+                else
+                {
+                    otherCounter++;
+                }
+            }
+            return nullCounter > otherCounter ? true : false;
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            List<double> numbersList = new List<double>();
+
+            if (numbers == null || !numbers.Any())
+            {
+                return 0;
+            }
+
+            foreach (var num in numbers)
+            {
+
+                if (num % 2 == 0)
+                {
+                    numbersList.Add(num);
+                }
+            }
+
+            if (!numbersList.Any())
+            {
+                return 0;
+            }
+            return numbersList.Average();
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            int fact = 1;
+
+            if (number < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            for (int x = number; x > 0; x--)
+            {
+                fact *= x;
+            }
+
+            return fact;
         }
     }
 }
